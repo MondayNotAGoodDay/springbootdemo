@@ -2,20 +2,23 @@ package com.example.springbootdemo.controller;
 
 import com.example.springbootdemo.entity.Student;
 import com.example.springbootdemo.service.StudentService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Log
-@Controller
+@RestController
 @RequestMapping("/student")
+@Api(value = "StudentController|学生控制器", description = "对学生进行增删改查", tags = "1.1")
 public class StudentController {
 
     @Autowired
     StudentService studentService;
 
+    @ApiOperation(value = "根据id查询学生", notes = "该id数据库里为自增长")
     @GetMapping(value = "/get/{id}")
     public Student getStudent(@PathVariable("id") int id, Model model){
         //调用service根据id获取student
@@ -24,20 +27,22 @@ public class StudentController {
         return student;
     }
 
+    @ApiOperation(value = "根据id删除单个学生")
     @GetMapping(value = "/delete/{id}")
     public void deleteStudent(@PathVariable("id") int id) {
         studentService.deleteStudentById(id);
     }
 
-    @PostMapping(value = "/add")
-    public String addAndUpdateStudent(@ModelAttribute("student") Student student,Model model){
-        studentService.saveStudent(student);
-        return "index";
+    @ApiOperation(value = "增加或更新学生")
+    @GetMapping(value = "/add")
+    public Student addAndUpdateStudent(Student student,Model model){
+        return studentService.saveStudent(student);
     }
 
-    @GetMapping(value = "/update")
-    public void updateStudent(@RequestBody(required = false) Student student){
-        studentService.updateStudent(student);
+    @PostMapping(value = "/update")
+    public Student updateStudent(@RequestBody Student student){
+        System.out.println("---------" + student + "------------");
+        return studentService.updateStudent(student);
     }
 }
 

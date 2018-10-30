@@ -9,13 +9,14 @@ import java.util.List;
 
 @Repository
 public class StudentService {
+
     @Autowired
     StudentRepository studentRepository;
 
-
-    public void saveStudent(Student student){
-        studentRepository.save(student);
+    public Student saveStudent(Student student){
+        return studentRepository.save(student);
     }
+
     public Student getStudentById(int id){
         Student student = studentRepository.findById(id).get();
         return student;
@@ -38,8 +39,8 @@ public class StudentService {
         studentRepository.deleteAll();
     }
 
-    public void updateStudent(Student student){
-        studentRepository.save(student);
+    public Student updateStudent(Student student){
+        return studentRepository.save(student);
     }
 
 }

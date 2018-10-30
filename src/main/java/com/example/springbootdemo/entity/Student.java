@@ -1,5 +1,7 @@
 package com.example.springbootdemo.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Objects;
 
-
+@ApiModel(value = "Student",description = "这是一个学生实体类")
 @Setter
 @Getter
 @Entity
@@ -17,9 +19,16 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @ApiModelProperty(value = "姓名", required = true)
     private String name;
+
+    @ApiModelProperty(value = "年龄")
     private int age;
+
+    @ApiModelProperty(value = "性别")
     private String sex;
+
 
     public Student() {
     }
