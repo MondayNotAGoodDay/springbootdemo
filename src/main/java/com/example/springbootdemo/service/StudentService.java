@@ -13,33 +13,39 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
-    public Student saveStudent(Student student){
+    /**
+     * 更新或插入Student
+     *
+     * @param student
+     * @return
+     */
+    public Student saveStudent(Student student) {
         return studentRepository.save(student);
     }
 
-    public Student getStudentById(int id){
-        Student student = studentRepository.findById(id).get();
+    public Student getStudentById(String id) {
+        Student student = studentRepository.findStuById(id);
         return student;
     }
 
-    public List<Student> getAllStudent(){
+    public List<Student> getAllStudent() {
         List<Student> stuList = studentRepository.findAll();
         return stuList;
     }
 
-    public void deleteStudentById(int id){
+    public void deleteStudentById(String id) {
         studentRepository.deleteById(id);
     }
 
-    public void deleteStudent(Student student){
+    public void deleteStudent(Student student) {
         studentRepository.delete(student);
     }
 
-    public void deleteAllStudent(){
+    public void deleteAllStudent() {
         studentRepository.deleteAll();
     }
 
-    public Student updateStudent(Student student){
+    public Student updateStudent(Student student) {
         return studentRepository.save(student);
     }
 

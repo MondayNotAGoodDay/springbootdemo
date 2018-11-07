@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class Swagger2Config {
 
     @Bean
-    public Docket createRestApi(){
+    public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
@@ -26,12 +26,12 @@ public class Swagger2Config {
                 .build();
     }
 
-    public ApiInfo apiInfo(){
+    private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("SpringBoot集成Swagger2")
                 .description("Swagger个人学习")
                 .termsOfServiceUrl("www.baidu.com")
-                .contact(new Contact("feng","www.baidu.com","522243062@qq.com"))
+                .contact(new Contact("feng", "www.baidu.com", "522243062@qq.com"))
                 .version("1.0")
                 .build();
     }
