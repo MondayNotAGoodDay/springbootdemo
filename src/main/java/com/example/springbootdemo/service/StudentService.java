@@ -2,16 +2,17 @@ package com.example.springbootdemo.service;
 
 import com.example.springbootdemo.entity.Student;
 import com.example.springbootdemo.repository.StudentRepository;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
+@Log
 public class StudentService {
 
     @Autowired
-    StudentRepository studentRepository;
+    private StudentRepository studentRepository;
 
     /**
      * 更新或插入Student
@@ -19,34 +20,35 @@ public class StudentService {
      * @param student
      * @return
      */
-    public Student saveStudent(Student student) {
-        return studentRepository.save(student);
+    public Student saveOrUpdateStudent(Student student) {
+        studentRepository.save(student);
+        return student;
     }
 
-    public Student getStudentById(String id) {
+    /**
+     * 根据 id 获取 Student 对象
+     * @param id Student's id
+     * @return
+     */
+    public Student getStudentById(Long id) {
         Student student = studentRepository.findStuById(id);
         return student;
     }
 
+    /**
+     * 获取全部Student
+     * @return student list
+     */
     public List<Student> getAllStudent() {
-        List<Student> stuList = studentRepository.findAll();
-        return stuList;
+        return studentRepository.findAll();
     }
 
-    public void deleteStudentById(String id) {
+    /**
+     * 根据 id 删除 Student 对象
+     * @param id
+     */
+    public void deleteStudentById(Long id) {
         studentRepository.deleteById(id);
-    }
-
-    public void deleteStudent(Student student) {
-        studentRepository.delete(student);
-    }
-
-    public void deleteAllStudent() {
-        studentRepository.deleteAll();
-    }
-
-    public Student updateStudent(Student student) {
-        return studentRepository.save(student);
     }
 
 }

@@ -1244,7 +1244,7 @@
                             // By happy coincidence, a (broken) gEBTN appears on DocumentFragment nodes too
                             results = context.getElementsByTagName(tag);
 
-                        // Filter out possible comments
+                        // filter out possible comments
                         if (tag === "*") {
                             while ((elem = results[i++])) {
                                 if (elem.nodeType === 1) {
