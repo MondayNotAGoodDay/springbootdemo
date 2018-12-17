@@ -35,7 +35,7 @@ public class StudentController {
         return "index";
     }
 
-    @GetMapping(value = "/update")
+    @PostMapping(value = "/update")
     public void updateStudent(@RequestBody(required = false) Student student){
         studentService.updateStudent(student);
     }
