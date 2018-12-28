@@ -2,36 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>test</title>
-    <script src="../static/js/jquery-3.2.0.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/core.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    this is index
-    <!--<form action="/student/add" method="post" th:object="${student}">-->
-        <!--<table border="1px">-->
-            <!--<tr>-->
-                <!--<td>id</td>-->
-                <!--<td><input type="text" name="id" th:value="*{id}"/></td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td>name</td>-->
-                <!--<td><input type="text" name="name" th:value="*{name}"/></td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td>age</td>-->
-                <!--<td><input type="text" name="age" th:value="*{age}"/></td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td>sex</td>-->
-                <!--<td><input type="text" name="sex" th:value="*{sex}"/></td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td th:cols="2"><input type="submit" value="提交"/></td>-->
-            <!--</tr>-->
-        <!--</table>-->
-    <!--</form>-->
-</body>
-<script>
+    <div id="nav">
+        <ul>
+            <li><a th:href="@{/stu/add}">添加学生</a></li>
 
-</script>
+            <li><a th:href="@{/stu/getAll}">查询学生</a></li>
+        </ul>
+    </div>
+    <br>
+    <div id="students">
+        <table border="1px" >
+            <tr th:if="${students != null}">
+                <td>id</td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>性别</td>
+            </tr>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td><a th:text="${student.name}" th:href="@{/stu/update/{id}(id=${student.id})}">名字</a></td>
+                <td th:text="${student.age}"></td>
+                <td th:text="${student.sex}"></td>
+                <td><a th:href="@{/stu/delete/{id}(id=${student.id})}">删除</a></td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
 </html>
+
