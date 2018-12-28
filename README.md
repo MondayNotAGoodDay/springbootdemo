@@ -1,2 +1,9 @@
-1. 该版本包含最简单的增删改查功能。
-2. 用于学习thymeleaf的版本
+1. 该版本集成了thymeleaf实现了简单的增删改查
+2. 访问localhost:1234访问首页导航栏
+
+所用技术：
+1. JPA
+2. thymeleaf
+3. mysql
+4. lombok
+5. SpringBoot
