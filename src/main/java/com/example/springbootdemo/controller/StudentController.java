@@ -36,7 +36,7 @@ public class StudentController extends BaseController {
 
     @ApiOperation(value = "增加或更新学生")
     @PostMapping(value = "/add")
-    public Student addAndUpdateStudent(Student student, Model model) {
+    public Student addAndUpdateStudent(Student student) {
         return studentService.saveStudent(student);
     }
 
