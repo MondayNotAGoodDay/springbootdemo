@@ -26,7 +26,6 @@ public class StudentController {
         //调用service根据id获取student
         Student student = studentService.getStudentById(id);
         model.addAttribute("student", student);
-        //System.out.println("--------" + student + "-------");
         return student;
     }
 
